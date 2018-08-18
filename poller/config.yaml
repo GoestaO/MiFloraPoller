@@ -1,0 +1,12 @@
+sensors:
+  sensor1:
+    name:
+    bluetooth_mac_address:
+  sensor2:
+    name:
+    bluetooth_mac_address:
+database:
+  host:
+  username:
+  password:
+  db_name:
