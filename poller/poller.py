@@ -9,7 +9,6 @@ from models import SensorData
 from db import persist
 
 
-
 def get_miflora_data(self, poller):
     d = dict()
     try:
@@ -23,6 +22,7 @@ def get_miflora_data(self, poller):
     except BluetoothBackendException as e:
         d['data'] = 'no data'
     return d
+
 
 def map_sensor_data_entity(sensor_data):
     if not 'data' in sensor_data:
@@ -38,6 +38,7 @@ if __name__ == "__main__":
         poller = MiFloraPoller(sensor.get("bluetooth_mac_address"), GatttoolBackend)
         sensordata_raw = get_miflora_data(poller)
         sensordata_entity = map_sensor_data_entity(sensordata_raw)
+        sensordata_entity.sensor_name = poller
         persist(sensordata_entity)
 
 
