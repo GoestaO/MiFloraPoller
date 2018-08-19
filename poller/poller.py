@@ -32,10 +32,10 @@ def map_sensor_data_entity(sensor_data):
     return None
 
 if __name__ == "__main__":
-    sensors = configuration.get('sensors').keys()
-
+    sensors = configuration.get("sensors")
     for sensor in sensors:
-        poller = MiFloraPoller(sensor.get("bluetooth_mac_address"), GatttoolBackend)
+        bluetooth_mac_address = sensor.get('bluetooth_mac_address')
+        poller = MiFloraPoller(bluetooth_mac_address, GatttoolBackend)
         sensordata_raw = get_miflora_data(poller)
         sensordata_entity = map_sensor_data_entity(sensordata_raw)
         sensordata_entity.sensor_name = poller
