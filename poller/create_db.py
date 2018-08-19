@@ -10,7 +10,15 @@ APPLICATION_DIR = os.path.abspath(os.path.join(CURRENT_DIR, os.pardir))
 sys.path.append(CURRENT_DIR)
 sys.path.append(APPLICATION_DIR)
 from models import Protocol, Base
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://frickel:frickel@178.254.54.45:3306/poller'
+
+db_connection = configuration.get('database')
+
+username = db_connection.get('username')
+password = db_connection.get('password')
+host = db_connection.get('host')
+db_name = db_connection.get('db_name')
+
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{}:{}@{}:3306/{}".format(username, password, host, db_name)
 
 if __name__ == "__main__":
     engine = create_engine(SQLALCHEMY_DATABASE_URI)

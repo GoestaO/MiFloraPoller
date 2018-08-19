@@ -39,7 +39,6 @@ if __name__ == "__main__":
         poller = MiFloraPoller(bluetooth_mac_address, GatttoolBackend)
         sensordata_raw = get_miflora_data(poller)
         sensordata_entity = map_sensor_data_entity(sensor_data=sensordata_raw, sensor_name=sensor_name)
-        print(sensordata_entity)
         persist(sensordata_entity)
 
 
