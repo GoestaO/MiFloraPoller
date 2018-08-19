@@ -1,10 +1,10 @@
 sensors:
   sensor1:
-    name:
-    bluetooth_mac_address:
+    name: Sensor 1
+    bluetooth_mac_address: ''
   sensor2:
-    name:
-    bluetooth_mac_address:
+    name: Sensor 2
+    bluetooth_mac_address: ''
 database:
   host:
   username:
