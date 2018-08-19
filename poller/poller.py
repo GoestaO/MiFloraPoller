@@ -9,7 +9,7 @@ from models import SensorData
 from db import persist
 
 
-def get_miflora_data(self, poller):
+def get_miflora_data(poller):
     d = dict()
     try:
         d['firmware'] = poller.firmware_version()
@@ -37,8 +37,9 @@ if __name__ == "__main__":
         bluetooth_mac_address = sensor.get('bluetooth_mac_address')
         poller = MiFloraPoller(bluetooth_mac_address, GatttoolBackend)
         sensordata_raw = get_miflora_data(poller)
+        print(sensordata_raw)
         sensordata_entity = map_sensor_data_entity(sensordata_raw)
-        sensordata_entity.sensor_name = poller
-        persist(sensordata_entity)
+        # sensordata_entity.sensor_name = poller
+        # persist(sensordata_entity)
 
 
