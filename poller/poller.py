@@ -24,10 +24,10 @@ def get_miflora_data(poller):
     return d
 
 
-def map_sensor_data_entity(sensor_data):
+def map_sensor_data_entity(sensor_data, sensor_name):
     if not 'data' in sensor_data:
         p = SensorData(temperature=sensor_data['temperature'], moisture=sensor_data['moisture'],
-                       fertility=sensor_data['conductivity'], light=sensor_data['light'], battery=sensor_data['battery'])
+                       fertility=sensor_data['conductivity'], light=sensor_data['light'], battery=sensor_data['battery'], sensor_name=sensor_name)
         return p
     return None
 
@@ -35,11 +35,11 @@ if __name__ == "__main__":
     sensors = configuration.get("sensors")
     for sensor in sensors:
         bluetooth_mac_address = sensor.get('bluetooth_mac_address')
+        sensor_name = sensor.get('name')
         poller = MiFloraPoller(bluetooth_mac_address, GatttoolBackend)
         sensordata_raw = get_miflora_data(poller)
-        print(sensordata_raw)
-        sensordata_entity = map_sensor_data_entity(sensordata_raw)
-        # sensordata_entity.sensor_name = poller
-        # persist(sensordata_entity)
+        sensordata_entity = map_sensor_data_entity(sensor_data=sensordata_raw, sensor_name=sensor_name)
+        print(sensordata_entity)
+        persist(sensordata_entity)
 
 
