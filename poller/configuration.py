@@ -10,8 +10,7 @@ def load_yaml(file):
 configuration = load_yaml("{}/{}".format(CURDIR, "config.yaml"))
 
 if __name__ == "__main__":
-    pprint(configuration)
     sensors = configuration.get("sensors")
     for sensor in sensors:
-        pprint(sensor.get('name'))
+        pprint(sensor.get('bluetooth_mac_address'))
 
