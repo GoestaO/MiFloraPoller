@@ -1,0 +1,11 @@
+sensors:
+  # at least one sensor required
+  - name: SENSOR_NAME_1
+    bluetooth_mac_address: MAC_ADDRESS
+  - name: SENSOR_NAME_2
+    bluetooth_mac_address: MAC_ADDRESS
+database:
+  host: HOST_IP
+  username: USERNAME
+  password: PASSWORD
+  db_name: DB_NAME
