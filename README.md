@@ -1,5 +1,5 @@
-    # MiFloraPoller
-    A poller to fetch the sensordata from a Xiaomi Mi Flora plant sensor and to save the values in a database. 
+# MiFloraPoller
+A poller to fetch the sensordata from a Xiaomi Mi Flora plant sensor and to save the values in a database. 
 
 ## How to use it
 
